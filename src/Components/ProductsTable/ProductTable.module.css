@@ -1,5 +1,6 @@
 .productsTableContainer {
   width: 50%;
+  min-width: 800px;
   align-self: center;
   height: 500px;
   margin: 40px;
@@ -7,6 +8,7 @@
 }
 .productsTableContainer > table {
   width: 100%;
+  overflow: auto;
 }
 
 .productsTableContainer thead {
