@@ -1,0 +1,12 @@
+.buttonContainer {
+  margin: 0 auto;
+}
+
+.buttonContainer > button {
+  padding: 10px;
+  background-color: rgb(23, 69, 84);
+  border: none;
+  color: white;
+  font-weight: 500;
+  font-size: 1.3rem;
+}

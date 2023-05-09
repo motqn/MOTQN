@@ -1,0 +1,45 @@
+.footerBody {
+  height: 200px;
+  background-color: rgb(23, 69, 84);
+  display: flex;
+  color: white;
+  justify-content: space-around;
+  padding: 20px;
+}
+
+.footerContacts {
+  width: 200px;
+}
+.footerLogo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.footerLogo,
+.contactsList {
+  filter: invert(100%);
+}
+.contactsList {
+  margin: 10px;
+  display: flex;
+  justify-content: space-evenly;
+  list-style: none;
+}
+.contactsList img {
+  width: 30px;
+}
+
+.footerColumn > ul {
+  list-style: none;
+}
+.footerColumn > ul > li {
+  margin: 10px;
+}
+.footerColumn a {
+  color: white;
+  text-decoration: none;
+}
+
+.footerColumn a:hover {
+  text-decoration: underline;
+}
