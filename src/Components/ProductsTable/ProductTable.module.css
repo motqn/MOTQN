@@ -13,7 +13,8 @@
   overflow: auto;
 }
 .productsTableContainer > table {
-  width: 800px;
+  min-width: 800px;
+  width: 100%;
 }
 
 .productsTableContainer thead {
