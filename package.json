@@ -1,7 +1,7 @@
 {
   "name": "motqn",
   "version": "0.1.0",
-   "homepage": "https://khaledhegazy222.github.io/Motqn",
+   "homepage": "https://khaledhegazy222.github.io/motqn",
   "private": true,
   "dependencies": {
     "@google-cloud/local-auth": "^2.1.0",
