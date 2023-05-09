@@ -26,15 +26,20 @@
   justify-content: space-evenly;
   list-style: none;
 }
+.contactsList > li {
+  width: 25%;
+}
 .contactsList img {
-  width: 30px;
+  width: 100%;
 }
 
 .footerColumn > ul {
+  padding: 0;
   list-style: none;
 }
 .footerColumn > ul > li {
   margin: 10px;
+  text-align: center;
 }
 .footerColumn a {
   color: white;
@@ -43,4 +48,13 @@
 
 .footerColumn a:hover {
   text-decoration: underline;
+}
+
+@media screen and (max-width: 450px) {
+  .footerContacts {
+    width: 130px;
+  }
+  .footerColumn > h2 {
+    font-size: 1.3rem;
+  }
 }

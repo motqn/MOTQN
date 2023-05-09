@@ -1,22 +1,19 @@
 .productsBody {
-  width: 50%;
-  min-width: 800px;
+  width: clamp(300px, 90%, 1000px);
   align-self: center;
-  margin: 40px;
+  margin: 40px auto;
   text-align: center;
+  overflow: hidden;
 }
 
 .spinnerContainer {
   text-align: center;
 }
 .productsTableContainer {
-  height: 500px;
-  width: 100%;
   overflow: auto;
 }
 .productsTableContainer > table {
-  width: 100%;
-  overflow: auto;
+  width: 800px;
 }
 
 .productsTableContainer thead {
@@ -57,4 +54,10 @@
 }
 .productsTableContainer td {
   text-align: center;
+}
+
+@media screen and (max-width: 700px) {
+  .productsBody {
+    margin: 10px auto;
+  }
 }
