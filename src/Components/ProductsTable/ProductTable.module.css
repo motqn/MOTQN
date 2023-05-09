@@ -1,9 +1,17 @@
-.productsTableContainer {
+.productsBody {
   width: 50%;
   min-width: 800px;
   align-self: center;
-  height: 500px;
   margin: 40px;
+  text-align: center;
+}
+
+.spinnerContainer {
+  text-align: center;
+}
+.productsTableContainer {
+  height: 500px;
+  width: 100%;
   overflow: auto;
 }
 .productsTableContainer > table {
@@ -25,6 +33,12 @@
   font-size: 1.3rem;
   height: 50px;
 }
+.productsTableContainer td,
+.productsTableContainer th {
+  border-right: 1px solid gray;
+  border-left: 1px solid gray;
+}
+
 .productsTableContainer tbody tr:nth-child(odd) {
   background-color: #d6d6d6;
 }
@@ -36,6 +50,11 @@
   background-color: #5b98ae;
 }
 
+.productsTableContainer tbody tr.selectedItem {
+  background-color: rgb(37, 109, 134);
+  color: white;
+  border: 1px solid gray;
+}
 .productsTableContainer td {
   text-align: center;
 }

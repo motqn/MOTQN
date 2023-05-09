@@ -1,9 +1,9 @@
 import style from "./CheckoutButton.module.css";
 
-const CheckoutButton = () => {
+const CheckoutButton = ({ onClick }) => {
   return (
     <div className={style.buttonContainer}>
-      <button>Checkout</button>
+      <button onClick={onClick}>Checkout</button>
     </div>
   );
 };
