@@ -1,6 +1,16 @@
 import style from "./ComponentCard.module.css";
 
-const ComponentCard = ({ id, name, image, price, specs, defects, status }) => {
+const ComponentCard = ({
+  id,
+  name,
+  image,
+  price,
+  specs,
+  defects,
+  status,
+  onBuy,
+  onDetails,
+}) => {
   return (
     <div key={id} className={style.cardContainer}>
       <img src={image} alt="Component" />
@@ -10,8 +20,12 @@ const ComponentCard = ({ id, name, image, price, specs, defects, status }) => {
           <p className={style.price}>{price} EGP</p>
         </div>
         <div className={style.cardButtonsContainer}>
-          <button className={style.detailsButton}>Details</button>
-          <button className={style.buyButton}>Add to cart</button>
+          <button className={style.detailsButton} onClick={onDetails}>
+            Details
+          </button>
+          <button className={style.buyButton} onClick={onBuy}>
+            Add to cart
+          </button>
         </div>
       </div>
     </div>

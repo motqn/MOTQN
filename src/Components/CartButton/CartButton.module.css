@@ -9,19 +9,35 @@
   display: flex;
   align-items: center;
   border-radius: 100px;
-  overflow: hidden;
+  overflow: visible;
   font-size: 1.9rem;
 }
 
 .buttonBody {
+  position: relative;
   color: inherit;
+  border-radius: inherit;
   background-color: inherit;
   border: none;
   font-size: inherit;
   display: flex;
   padding: 20px;
 }
-
+.cartProducts {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  color: white;
+  background-color: red;
+  font-size: 0.4rem;
+  z-index: 6;
+  top: 0;
+  left: 0;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+}
 .cartBody > p {
   text-align: left;
   white-space: nowrap;
