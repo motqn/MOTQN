@@ -1,6 +1,10 @@
 .sectionBody {
   padding: 20px;
   width: 80%;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin: 20px auto;
 }
 .spinnerContainer {
@@ -14,9 +18,35 @@
 }
 .galleryContainer {
   display: grid;
-
+  flex: 1;
   padding: 20px;
   grid-template-columns: repeat(auto-fill, minmax(200px, 300px));
   justify-content: center;
-  gap: 20px 70px;
+  gap: 50px;
+}
+
+@media screen and (max-width: 1800px) {
+  .sectionBody {
+    width: 90%;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .sectionBody {
+    width: 95%;
+  }
+  .galleryContainer {
+    padding: 20px 10px;
+    gap: 20px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .sectionBody {
+    width: 100%;
+  }
+  .galleryContainer {
+    padding: 20px 5px;
+    gap: 10px;
+  }
 }

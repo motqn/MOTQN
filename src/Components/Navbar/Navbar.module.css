@@ -1,5 +1,8 @@
 .navbarBody {
-  height: 100px;
+  position: sticky;
+  z-index: 1;
+  top: 0;
+  height: 70px;
   background-color: rgb(23, 69, 84);
   display: flex;
   justify-content: center;
@@ -13,7 +16,6 @@
 }
 
 .navbarBody > img {
-  height: 70px;
-  margin: 20px;
+  height: 80%;
   filter: invert(100%);
 }

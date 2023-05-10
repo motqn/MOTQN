@@ -1,0 +1,50 @@
+.NavigationPageContainer {
+  position: sticky;
+  top: 70px;
+  z-index: 1;
+  background-color: lightblue;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  align-items: center;
+  padding: 5px 20px;
+}
+
+.NavigationPageContainer > h2 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.NavigationPageContainer span {
+  color: rgb(23, 69, 84);
+}
+
+.searchContainer {
+  background-color: white;
+  padding: 0 10px;
+  margin: 5px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 20px;
+}
+
+.searchContainer > input {
+  width: 200px;
+  font-size: 0.8rem;
+  border: none;
+  outline: none;
+}
+
+@media screen and (max-width: 500px) {
+  .NavigationPageContainer {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .NavigationPageContainer > h2 {
+    width: 100%;
+    text-align: center;
+  }
+}

@@ -43,7 +43,6 @@ const ComponentsGallery = () => {
         </div>
       ) : (
         <>
-          <h2 className={style.galleryTitle}>Components</h2>
           <div className={style.galleryContainer}>
             {components.map((component) => (
               <ComponentCard
