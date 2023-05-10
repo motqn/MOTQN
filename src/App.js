@@ -1,17 +1,18 @@
 import "./App.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 import Navbar from "./Components/Navbar";
 import Footer from "./Components/Footer";
-import ProductTable from "./Components/ProductsTable";
-import 'bootstrap/dist/css/bootstrap.min.css';
-
+import ComponentsGallery from "./Components/ComponentsGallery/ComponentsGallery";
+import CartButton from "./Components/CartButton";
 
 function App() {
   return (
     <>
       <div className="page-container">
         <Navbar />
-        <ProductTable />
+        <ComponentsGallery />
+        <CartButton />
         <Footer />
       </div>
     </>

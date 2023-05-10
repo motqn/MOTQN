@@ -5,8 +5,15 @@
 .buttonContainer > button {
   padding: 10px;
   background-color: rgb(23, 69, 84);
+  border-radius: 10px;
+  width: 200px;
   border: none;
   color: white;
   font-weight: 500;
   font-size: 1.3rem;
+  transition: all 200ms;
+}
+.buttonContainer > button:hover {
+  transform: scale(1.1);
+  box-shadow: 2px 2px 10px 2px gray;
 }

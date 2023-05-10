@@ -1,0 +1,39 @@
+.cartBody {
+  position: fixed;
+  right: 50px;
+  bottom: 50px;
+  z-index: 1;
+  border: none;
+  background-color: #e9e9ed;
+  color: rgb(29, 109, 135);
+  display: flex;
+  align-items: center;
+  border-radius: 100px;
+  overflow: hidden;
+  font-size: 1.9rem;
+}
+
+.buttonBody {
+  color: inherit;
+  background-color: inherit;
+  border: none;
+  font-size: inherit;
+  display: flex;
+  padding: 20px;
+}
+
+.cartBody > p {
+  text-align: left;
+  white-space: nowrap;
+  font-size: 1.6rem;
+  font-weight: 700;
+  width: 0;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  transition: all 1s;
+}
+
+.cartBody:hover > p {
+  width: 200px;
+}

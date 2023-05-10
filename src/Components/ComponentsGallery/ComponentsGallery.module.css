@@ -1,0 +1,22 @@
+.sectionBody {
+  padding: 20px;
+  width: 80%;
+  margin: 20px auto;
+}
+.spinnerContainer {
+  text-align: center;
+  height: max-content;
+}
+
+.galleryTitle {
+  text-align: center;
+  font-size: 2.3rem;
+}
+.galleryContainer {
+  display: grid;
+
+  padding: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 300px));
+  justify-content: center;
+  gap: 20px 70px;
+}
