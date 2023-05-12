@@ -15,7 +15,7 @@ const Popup = ({ trigger, children }) => {
           justifyContent: "center",
         }}
       >
-        <div>{children}</div>
+        {children}
       </div>
     )
   );

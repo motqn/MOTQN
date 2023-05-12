@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
+import { toast } from "react-toastify";
 import useGoogleSheets from "use-google-sheets";
 import Spinner from "react-bootstrap/Spinner";
 import style from "./ComponentsGallery.module.css";
@@ -8,23 +9,41 @@ const ComponentsGallery = ({ selectedItems, setSelectedItems }) => {
   const [components, setComponents] = useState([]);
   const [componentDetails, setComponentsDetails] = useState({});
   const [showDetailsPopup, setShowDetailsPopup] = useState(false);
-  const [showAddToCartPopup, setShowAddToCartPopup] = useState(false);
+  const quantityRef = useRef();
   const { data, loading } = useGoogleSheets({
-    apiKey: "AIzaSyDNTfovoZcOsAQdDmef04yUJMMzB4qi4E0",
-    sheetId: "1Q9FDjB9rAkb2GJsF45DWAoLhM4ecJHOyWlRWMw5ei_A",
+    // apiKey: "AIzaSyDNTfovoZcOsAQdDmef04yUJMMzB4qi4E0",
+    // sheetId: "1Q9FDjB9rAkb2GJsF45DWAoLhM4ecJHOyWlRWMw5ei_A",
+
+    apiKey: "AIzaSyB36HE6CTusQids_GUWE0nASGSoQzCiCVQ",
+    sheetId: "1nIl2Nerrd279wKb8bjv2SxGTZ0IMf-ojt90WRwK1dSA",
   });
 
-  const handleClick = () => {
-    const url = new URL("https://wa.me/+201025307327");
-    const message =
-      "Hello Motqn, I'd like to buy:" +
-      selectedItems.reduce((total, current) => {
-        return total + `\n - "${current.name}" which id is [${current.id}]`;
-      }, "");
-    url.searchParams.append("text", message);
-    window.open(url.toString(), "_blank");
-  };
+  const addItem = (id, quantity, componentData = componentDetails) => {
+    quantity = parseInt(quantity);
+    setSelectedItems((prevList) => {
+      const res = [...prevList];
+      const componentIndex = res.findIndex(
+        (element) => element.id === componentData.id
+      );
 
+      if (componentIndex === -1) {
+        res.push({ ...componentData, quantity });
+      } else {
+        res[componentIndex].quantity += quantity;
+      }
+
+      return res;
+    });
+  };
+  const handleSubmit = (e) => {
+    // e.preventDefault();
+    setShowDetailsPopup(false);
+    toast.success("Component Added To Cart", {
+      autoClose: 1000,
+      position: "top-center",
+    });
+    addItem(componentDetails.id, quantityRef.current.value);
+  };
   useEffect(() => {
     if (!loading) {
       const componentsPage = data.find((page) => page.id === "Components");
@@ -46,76 +65,41 @@ const ComponentsGallery = ({ selectedItems, setSelectedItems }) => {
       ) : (
         <>
           <Popup trigger={showDetailsPopup}>
-            <div className={style.popupBody}>
-              <div className={style.componentDetails}>
-                <img src={componentDetails.image} alt="Component" />
+            <form onSubmit={handleSubmit}>
+              <div className={style.popupBody}>
+                <div className={style.componentDetails}>
+                  <img src={componentDetails.image} alt="Component" />
 
-                <div className={style.componentText}>
-                  <p className={style.name}>{componentDetails.name}</p>
-                  <p>{componentDetails.specs}</p>
-                  <p>{componentDetails.defects}</p>
-                  <p>{componentDetails.status}</p>
-                  <p>{componentDetails.price}</p>
+                  <div className={style.componentText}>
+                    <p className={style.name}>{componentDetails.name}</p>
+                    <p>Specs: {componentDetails.specs}</p>
+                    <p>Defects: {componentDetails.defects}</p>
+                    <p>Availability: {componentDetails.status}</p>
+                    <p>Price: {componentDetails.price} EGP</p>
+                  </div>
+                </div>
+                <div className={style.quantityContainer}>
+                  <label>
+                    Quantity:
+                    <input type="number" defaultValue={1} ref={quantityRef} />
+                  </label>
+                </div>
+                <div className={style.buttonsContainer}>
+                  <button
+                    className={style.cancelButton}
+                    onClick={(e) => {
+                      setShowDetailsPopup(false);
+                    }}
+                    type="button"
+                  >
+                    Cancel
+                  </button>
+                  <button type="submit" className={style.buyButton}>
+                    Add to cart
+                  </button>
                 </div>
               </div>
-              <div className={style.buttonsContainer}>
-                <button
-                  className={style.cancelButton}
-                  onClick={(e) => {
-                    setShowDetailsPopup(false);
-                  }}
-                >
-                  Cancel
-                </button>
-                <button
-                  className={style.buyButton}
-                  onClick={(e) => {
-                    setShowDetailsPopup(false);
-                    setShowAddToCartPopup(true);
-                  }}
-                >
-                  Add to cart
-                </button>
-              </div>
-            </div>
-          </Popup>
-
-          <Popup trigger={showAddToCartPopup}>
-            <div className={style.popupBody}>
-              <div className={style.componentDetails}>
-                <img src={componentDetails.image} alt="Component" />
-
-                <div className={style.componentText}>
-                  <p className={style.name}>{componentDetails.name}</p>
-                  <p>{componentDetails.specs}</p>
-                  <p>{componentDetails.defects}</p>
-                  <p>{componentDetails.status}</p>
-                  <p>{componentDetails.price}</p>
-                </div>
-              </div>
-              <div className={style.buttonsContainer}>
-                <button
-                  className={style.cancelButton}
-                  onClick={(e) => {
-                    setShowAddToCartPopup(false);
-                  }}
-                >
-                  Cancel
-                </button>
-                <button
-                  className={style.buyButton}
-                  onClick={(e) => {
-                    setShowAddToCartPopup(false);
-                    setSelectedItems((prevItem) => [
-                      ...prevItem,
-                      componentDetails,
-                    ]);
-                  }}
-                >
-                  Add to cart
-                </button>
-              </div>
-            </div>
+            </form>
           </Popup>
 
           <div className={style.galleryContainer}>
@@ -131,18 +115,18 @@ const ComponentsGallery = ({ selectedItems, setSelectedItems }) => {
               };
               return (
                 <ComponentCard
+                  key={component.ID}
                   {...componentData}
                   onDetails={() => {
-                    setComponentsDetails({ ...componentData });
+                    setComponentsDetails(componentData);
                     setShowDetailsPopup(true);
                   }}
                   onBuy={() => {
-                    // setComponentsDetails({ ...componentData });
-                    setSelectedItems((prevItem) => [
-                      ...prevItem,
-                      componentData,
-                    ]);
-                    // setShowAddToCartPopup(true);
+                    toast.success("Component Added To Cart", {
+                      autoClose: 1000,
+                      position: "top-center",
+                    });
+                    addItem(componentData.id, 1, componentData);
                   }}
                 />
               );
