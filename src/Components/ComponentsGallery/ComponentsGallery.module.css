@@ -51,17 +51,49 @@
 
 .componentDetails {
   display: flex;
-  align-items: flex-start;
   gap: 20px;
 }
 .componentDetails > img {
-  height: 150px;
+  height: 500px;
 }
-.componentText > .name {
+
+.componentData {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: center;
+}
+.componentText > .productTitle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+.componentText > .productTitle > .name {
   font-weight: 600;
   font-size: 1.5rem;
 }
-.quantityContainer {
+.availableSt,
+.soldSt,
+.pendingSt {
+  padding: 0;
+  width: 80px;
+  text-align: center;
+  font-size: 0.8rem;
+  border-radius: 20px;
+  border: none;
+}
+.availableSt {
+  background-color: green;
+  color: white;
+}
+.soldSt {
+  background-color: red;
+  color: white;
+}
+.pendingSt {
+  background-color: rgb(234, 234, 102);
+  color: black;
 }
 .quantityContainer > label {
   text-align: center;

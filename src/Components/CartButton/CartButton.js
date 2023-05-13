@@ -2,9 +2,24 @@ import React, { useState } from "react";
 import style from "./CartButton.module.css";
 import Popup from "../Popup";
 import { CartFill } from "react-bootstrap-icons";
-
+import { toast } from "react-toastify";
 const CartButton = ({ selectedItems, setSelectedItems }) => {
   const [showPopup, setShowPopup] = useState(false);
+  const changeQuantity = (item, delta) => {
+    if (item.quantity + delta < 1) {
+      toast.error("Can't set the quantity to be less than one", {
+        autoClose: 1000,
+        position: "top-center",
+      });
+      return;
+    }
+    setSelectedItems((prevValue) => {
+      const listCopy = [...prevValue];
+      const itemIndex = listCopy.findIndex((element) => element.id === item.id);
+      listCopy[itemIndex].quantity += delta;
+      return listCopy;
+    });
+  };
   return (
     <>
       <Popup trigger={showPopup}>
@@ -47,7 +62,25 @@ const CartButton = ({ selectedItems, setSelectedItems }) => {
                       </td>
                       <td style={{ textAlign: "left" }}>{item.name}</td>
                       <td>{item.price}</td>
-                      <td>{item.quantity}</td>
+                      <td className={style.quantityCell}>
+                        <button
+                          onClick={(e) => {
+                            e.preventDefault();
+                            changeQuantity(item, -1);
+                          }}
+                        >
+                          -
+                        </button>
+                        <p>{item.quantity}</p>
+                        <button
+                          onClick={(e) => {
+                            e.preventDefault();
+                            changeQuantity(item, 1);
+                          }}
+                        >
+                          +
+                        </button>
+                      </td>
                       <td>{(item.price * item.quantity).toFixed(2)}</td>
                     </tr>
                   ))}
@@ -73,7 +106,7 @@ const CartButton = ({ selectedItems, setSelectedItems }) => {
                         total + current.quantity * current.price,
                       0
                     )
-                    .toFixed(2) + " EG"}
+                    .toFixed(2) + " EGP"}
                 </span>
               </h2>
             </>

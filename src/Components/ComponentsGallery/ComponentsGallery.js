@@ -36,7 +36,7 @@ const ComponentsGallery = ({ selectedItems, setSelectedItems }) => {
     });
   };
   const handleSubmit = (e) => {
-    // e.preventDefault();
+    e.preventDefault();
     setShowDetailsPopup(false);
     toast.success("Component Added To Cart", {
       autoClose: 1000,
@@ -69,34 +69,54 @@ const ComponentsGallery = ({ selectedItems, setSelectedItems }) => {
               <div className={style.popupBody}>
                 <div className={style.componentDetails}>
                   <img src={componentDetails.image} alt="Component" />
+                  <div className={style.componentData}>
+                    <div className={style.componentText}>
+                      <div className={style.productTitle}>
+                        <p className={style.name}>{componentDetails.name}</p>
+                        <p
+                          className={
+                            componentDetails.status === "Available"
+                              ? style.availableSt
+                              : componentDetails.status === "Sold Out"
+                              ? style.soldSt
+                              : style.pendingSt
+                          }
+                        >
+                          {componentDetails.status}
+                        </p>
+                      </div>
+                      <p>Specs: {componentDetails.specs || "None"}</p>
+                      <p>Defects: {componentDetails.defects || "None"}</p>
 
-                  <div className={style.componentText}>
-                    <p className={style.name}>{componentDetails.name}</p>
-                    <p>Specs: {componentDetails.specs}</p>
-                    <p>Defects: {componentDetails.defects}</p>
-                    <p>Availability: {componentDetails.status}</p>
-                    <p>Price: {componentDetails.price} EGP</p>
+                      <p>Price: {componentDetails.price} EGP</p>
+                    </div>
+
+                    <div className={style.quantityContainer}>
+                      <label>
+                        Quantity:
+                        <input
+                          type="number"
+                          defaultValue={1}
+                          ref={quantityRef}
+                          min={1}
+                        />
+                      </label>
+                    </div>
+                    <div className={style.buttonsContainer}>
+                      <button
+                        className={style.cancelButton}
+                        onClick={(e) => {
+                          setShowDetailsPopup(false);
+                        }}
+                        type="button"
+                      >
+                        Cancel
+                      </button>
+                      <button type="submit" className={style.buyButton}>
+                        Add to cart
+                      </button>
+                    </div>
                   </div>
-                </div>
-                <div className={style.quantityContainer}>
-                  <label>
-                    Quantity:
-                    <input type="number" defaultValue={1} ref={quantityRef} />
-                  </label>
-                </div>
-                <div className={style.buttonsContainer}>
-                  <button
-                    className={style.cancelButton}
-                    onClick={(e) => {
-                      setShowDetailsPopup(false);
-                    }}
-                    type="button"
-                  >
-                    Cancel
-                  </button>
-                  <button type="submit" className={style.buyButton}>
-                    Add to cart
-                  </button>
                 </div>
               </div>
             </form>
