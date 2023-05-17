@@ -5,15 +5,12 @@ import Spinner from "react-bootstrap/Spinner";
 import style from "./ComponentsGallery.module.css";
 import ComponentCard from "../ComponentCard";
 import Popup from "../Popup";
-const ComponentsGallery = ({ selectedItems, setSelectedItems }) => {
+const ComponentsGallery = ({ searchStr, selectedItems, setSelectedItems }) => {
   const [components, setComponents] = useState([]);
   const [componentDetails, setComponentsDetails] = useState({});
   const [showDetailsPopup, setShowDetailsPopup] = useState(false);
   const quantityRef = useRef();
   const { data, loading } = useGoogleSheets({
-    // apiKey: "AIzaSyDNTfovoZcOsAQdDmef04yUJMMzB4qi4E0",
-    // sheetId: "1Q9FDjB9rAkb2GJsF45DWAoLhM4ecJHOyWlRWMw5ei_A",
-
     apiKey: "AIzaSyB36HE6CTusQids_GUWE0nASGSoQzCiCVQ",
     sheetId: "1nIl2Nerrd279wKb8bjv2SxGTZ0IMf-ojt90WRwK1dSA",
   });
@@ -37,12 +34,26 @@ const ComponentsGallery = ({ selectedItems, setSelectedItems }) => {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
+    const quantity = parseInt(quantityRef.current.value);
+    if (componentDetails.available < quantity) {
+      toast.error(
+        "Can't buy that number of products, only " +
+          componentDetails.available +
+          " are currently available!",
+        {
+          autoClose: 1000,
+          position: "top-right",
+        }
+      );
+      return;
+    }
+
     setShowDetailsPopup(false);
     toast.success("Component Added To Cart", {
       autoClose: 1000,
       position: "top-center",
     });
-    addItem(componentDetails.id, quantityRef.current.value);
+    addItem(componentDetails.id, quantity);
   };
   useEffect(() => {
     if (!loading) {
@@ -50,11 +61,14 @@ const ComponentsGallery = ({ selectedItems, setSelectedItems }) => {
 
       setComponents(
         componentsPage.data.filter((component) => {
-          return component["In\nPlatform"] === "TRUE";
+          return (
+            component["In\nPlatform"] === "TRUE" &&
+            component["Name"].toLowerCase().includes(searchStr.toLowerCase())
+          );
         })
       );
     }
-  }, [loading, data]);
+  }, [loading, data, searchStr]);
 
   return (
     <div className={style.sectionBody}>
@@ -85,6 +99,7 @@ const ComponentsGallery = ({ selectedItems, setSelectedItems }) => {
                           {componentDetails.status}
                         </p>
                       </div>
+                      <p>remaining in stock: {componentDetails.available}</p>
                       <p>Specs: {componentDetails.specs || "None"}</p>
                       <p>Defects: {componentDetails.defects || "None"}</p>
 
@@ -99,9 +114,11 @@ const ComponentsGallery = ({ selectedItems, setSelectedItems }) => {
                           defaultValue={1}
                           ref={quantityRef}
                           min={1}
+                          max={componentDetails.available}
                         />
                       </label>
                     </div>
+
                     <div className={style.buttonsContainer}>
                       <button
                         className={style.cancelButton}
@@ -127,6 +144,7 @@ const ComponentsGallery = ({ selectedItems, setSelectedItems }) => {
               const componentData = {
                 id: component.ID,
                 name: component.Name,
+                available: component.Available,
                 image: component.IMG,
                 price: component["Price\nSell"],
                 specs: component.Specs,
@@ -142,6 +160,25 @@ const ComponentsGallery = ({ selectedItems, setSelectedItems }) => {
                     setShowDetailsPopup(true);
                   }}
                   onBuy={() => {
+                    let quantityTaken = 0;
+                    const index = selectedItems.findIndex(
+                      (item) => item.id === componentData.id
+                    );
+                    if (index !== -1) {
+                      quantityTaken = selectedItems[index].quantity;
+                    }
+                    if (componentData.available - quantityTaken < 1) {
+                      toast.error(
+                        "Can't buy that number of products, only " +
+                          componentData.available +
+                          " are currently available!",
+                        {
+                          autoClose: 1000,
+                          position: "top-right",
+                        }
+                      );
+                      return;
+                    }
                     toast.success("Component Added To Cart", {
                       autoClose: 1000,
                       position: "top-center",

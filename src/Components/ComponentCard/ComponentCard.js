@@ -8,12 +8,24 @@ const ComponentCard = ({
   specs,
   defects,
   status,
+  available,
   onBuy,
   onDetails,
 }) => {
   return (
     <div key={id} className={style.cardContainer}>
       <img src={image} alt="Component" />
+      <p
+        className={
+          status === "Available"
+            ? style.availableSt
+            : status === "Sold Out"
+            ? style.soldSt
+            : style.pendingSt
+        }
+      >
+        {status}
+      </p>
       <div className={style.componentDescription}>
         <div className={style.cardText}>
           <h2 className={style.title}>{name}</h2>

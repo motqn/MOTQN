@@ -13,6 +13,18 @@ const CartButton = ({ selectedItems, setSelectedItems }) => {
       });
       return;
     }
+    if (item.quantity + delta > item.available) {
+      toast.error(
+        "Can't buy that number of products, only " +
+          item.available +
+          " are currently available!",
+        {
+          autoClose: 1000,
+          position: "top-right",
+        }
+      );
+      return;
+    }
     setSelectedItems((prevValue) => {
       const listCopy = [...prevValue];
       const itemIndex = listCopy.findIndex((element) => element.id === item.id);
@@ -84,17 +96,6 @@ const CartButton = ({ selectedItems, setSelectedItems }) => {
                       <td>{(item.price * item.quantity).toFixed(2)}</td>
                     </tr>
                   ))}
-                  {/* <tr>
-                  <td>
-                    {selectedItems
-                      .reduce(
-                        (total, current) =>
-                          total + current.quantity * current.price,
-                        0
-                      )
-                      .toFixed(2)}
-                  </td>
-                </tr> */}
                 </tbody>
               </table>
               <h2 className={style.priceTotal}>

@@ -1,5 +1,5 @@
 import style from "./Footer.module.css";
-import logo from "../../assets/images/logo.svg";
+import logo from "../../assets/images/MotqnW.png";
 import facebookLogo from "../../assets/images/facebook.svg";
 import whatsappLogo from "../../assets/images/whatsapp.svg";
 import instagramLogo from "../../assets/images/instagram.svg";

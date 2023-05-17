@@ -120,18 +120,18 @@
   border-radius: 10px;
 }
 .buyButton {
-  background-color: rgb(23, 69, 84);
+  background-color: var(--light-primary-color);
   color: white;
 }
 .buyButton:hover {
-  background-color: rgb(16, 48, 59);
+  background-color: var(--dark-primary-color);
 }
 .cancelButton {
-  background-color: #e9e9ed;
+  background-color: var(--secondary-color);
   color: black;
 }
 .cancelButton:hover {
-  background-color: #b9b9be;
+  background-color: var(--dark-secondary-color);
 }
 
 @media screen and (max-width: 1800px) {

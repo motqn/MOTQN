@@ -7,19 +7,19 @@ import Navbar from "./Components/Navbar";
 import Footer from "./Components/Footer";
 import ComponentsGallery from "./Components/ComponentsGallery/ComponentsGallery";
 import CartButton from "./Components/CartButton";
-import NavigationPage from "./Components/NavigationPage";
 
 import { ToastContainer } from "react-toastify";
 
 function App() {
   const [selectedItems, setSelectedItems] = useState([]);
+  const [searchStr, setSearchStr] = useState("");
   return (
     <>
       <div className="page-container">
         <ToastContainer />
-        <Navbar />
-        <NavigationPage />
+        <Navbar setSearchStr={setSearchStr} />
         <ComponentsGallery
+          searchStr={searchStr}
           selectedItems={selectedItems}
           setSelectedItems={setSelectedItems}
         />

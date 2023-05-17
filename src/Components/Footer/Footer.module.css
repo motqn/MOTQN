@@ -1,6 +1,6 @@
 .footerBody {
   height: 200px;
-  background-color: rgb(23, 69, 84);
+  background-color: var(--primary-color);
   display: flex;
   color: white;
   justify-content: space-around;
@@ -15,7 +15,9 @@
   align-items: center;
   justify-content: center;
 }
-.footerLogo,
+.footerLogo > img {
+  width: 100px;
+}
 .contactsList {
   filter: invert(100%);
 }

@@ -1,3 +1,12 @@
+:root {
+  --primary-color: #00336e;
+  --light-primary-color: #014898;
+  --dark-primary-color: #01336c;
+  --secondary-color: #e1e1e1;
+  --light-secondary-color: #f3f3f4;
+  --dark-secondary-color: #bfbfc3;
+}
+
 .page-container {
   min-height: 100vh;
   display: flex;

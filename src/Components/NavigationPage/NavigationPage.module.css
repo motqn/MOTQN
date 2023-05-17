@@ -20,23 +20,6 @@
   color: rgb(23, 69, 84);
 }
 
-.searchContainer {
-  background-color: white;
-  padding: 0 10px;
-  margin: 5px;
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 20px;
-}
-
-.searchContainer > input {
-  width: 200px;
-  font-size: 0.8rem;
-  border: none;
-  outline: none;
-}
 
 @media screen and (max-width: 500px) {
   .NavigationPageContainer {
