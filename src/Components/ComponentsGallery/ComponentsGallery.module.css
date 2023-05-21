@@ -63,6 +63,39 @@
   gap: 20px;
   justify-content: center;
 }
+.componentData > * {
+  flex-shrink: 0;
+}
+.componentText {
+  flex: 1;
+}
+.productTableContainer {
+  max-width: 400px;
+}
+.productTableContainer table {
+  width: 100%;
+}
+.productTableContainer thead {
+  background-color: var(--primary-color);
+  color: white;
+  text-align: center;
+}
+.productTableContainer thead th {
+  border: 1px solid white;
+}
+.productTableContainer th,
+.productTableContainer td {
+  padding: 10px;
+}
+
+.productTableContainer tbody tr:nth-child(even) {
+  background-color: aliceblue;
+}
+.productTableContainer tbody tr:nth-child(odd) {
+}
+.productTableContainer tbody td {
+  border: 1px solid rgb(187, 187, 187);
+}
 .componentText > .productTitle {
   display: flex;
   justify-content: space-between;

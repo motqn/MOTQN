@@ -12,13 +12,19 @@ const Footer = () => {
         </div>
         <ul className={style.contactsList}>
           <li>
-            <img src={facebookLogo} />
+            <a href="#">
+              <img src={facebookLogo} alt="Facebook Link" />
+            </a>
           </li>
           <li>
-            <img src={whatsappLogo} />
+            <a href="#">
+              <img src={whatsappLogo} alt="Whatsapp Link" />
+            </a>
           </li>
           <li>
-            <img src={instagramLogo} />
+            <a href="#">
+              <img src={instagramLogo} alt="Instagram Link" />
+            </a>
           </li>
         </ul>
       </div>
@@ -26,13 +32,7 @@ const Footer = () => {
         <h2>Got Questions</h2>
         <ul>
           <li>
-            <a href="#">01271950277</a>
-          </li>
-          <li>
-            <a href="#">01271950277</a>
-          </li>
-          <li>
-            <a href="#">01271950277</a>
+            <a href="#">+20 102 530 7327</a>
           </li>
         </ul>
       </div>

@@ -35,7 +35,14 @@ const ComponentsGallery = ({ searchStr, selectedItems, setSelectedItems }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const quantity = parseInt(quantityRef.current.value);
-    if (componentDetails.available < quantity) {
+    let quantityTaken = 0;
+    const index = selectedItems.findIndex(
+      (item) => item.id === componentDetails.id
+    );
+    if (index !== -1) {
+      quantityTaken = selectedItems[index].quantity;
+    }
+    if (componentDetails.available - quantityTaken < quantity) {
       toast.error(
         "Can't buy that number of products, only " +
           componentDetails.available +
@@ -99,11 +106,34 @@ const ComponentsGallery = ({ searchStr, selectedItems, setSelectedItems }) => {
                           {componentDetails.status}
                         </p>
                       </div>
-                      <p>remaining in stock: {componentDetails.available}</p>
-                      <p>Specs: {componentDetails.specs || "None"}</p>
-                      <p>Defects: {componentDetails.defects || "None"}</p>
-
-                      <p>Price: {componentDetails.price} EGP</p>
+                      <div className={style.productTableContainer}>
+                        <table>
+                          <thead>
+                            <tr>
+                              <th>A</th>
+                              <th>B</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>remaining in stock</td>
+                              <td>{componentDetails.available}</td>
+                            </tr>
+                            <tr>
+                              <td>Specs</td>
+                              <td>{componentDetails.specs || "None"}</td>
+                            </tr>
+                            <tr>
+                              <td>Defects</td>
+                              <td>{componentDetails.defects || "None"}</td>
+                            </tr>
+                            <tr>
+                              <td>Price</td>
+                              <td> {componentDetails.price} EGP</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
                     </div>
 
                     <div className={style.quantityContainer}>
