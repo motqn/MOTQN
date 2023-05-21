@@ -2,7 +2,7 @@
   background-color: white;
   padding: 20px;
   border-radius: 10px;
-  width: clamp(300px, 100%, 800px);
+  width: clamp(300px, 90%, 800px);
   text-align: left;
   display: flex;
   flex-direction: column;
@@ -15,37 +15,37 @@
   padding: 20px;
 }
 
-.cartTable {
-  min-width: 600px;
+.cartTableContainer {
   width: 100%;
   max-height: 400px;
   overflow: auto;
   text-align: center;
 }
-.cartTable > * {
+.cartTableContainer > table {
+  width: 100%;
   min-width: 500px;
-  overflow: auto;
 }
 
-.cartTable th,
-.cartTable td {
+.cartTableContainer th,
+.cartTableContainer td {
+  white-space: nowrap;
   padding: 10px;
 }
-.cartTable tr {
+.cartTableContainer tr {
   height: 40px;
 }
 
-.cartTable thead tr {
+.cartTableContainer thead tr {
   background-color: var(--primary-color);
   color: white;
   font-size: 1rem;
   height: 50px;
 }
 
-.cartTable tbody tr:nth-child(odd) {
+.cartTableContainer tbody tr:nth-child(odd) {
   background-color: #d6d6d6;
 }
-.cartTable tbody tr:nth-child(even) {
+.cartTableContainer tbody tr:nth-child(even) {
   background-color: #c6c7c8;
 }
 .deleteButton {
@@ -54,8 +54,8 @@
 .deleteButton:hover {
   cursor: pointer;
 }
-.cartTable tbody tr.showDeleteAnimation,
-.cartTable tbody tr.showDeleteAnimation td {
+.cartTableContainer tbody tr.showDeleteAnimation,
+.cartTableContainer tbody tr.showDeleteAnimation td {
   animation: deleteItem 800ms ease-in-out 0s 1 normal forwards;
   overflow: hidden;
 }
@@ -102,7 +102,7 @@
   background-color: rgb(34, 34, 34);
 }
 
-.priceTotal {
+.popupBody .priceTotal {
   font-size: 1.9rem;
 }
 .priceTotal > span {
@@ -195,4 +195,10 @@
 
 .cartBody:hover > p {
   width: 200px;
+}
+
+@media screen and (max-width: 500px) {
+  .popupBody .priceTotal {
+    font-size: 1.5rem;
+  }
 }

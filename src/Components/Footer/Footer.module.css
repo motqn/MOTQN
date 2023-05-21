@@ -1,5 +1,4 @@
 .footerBody {
-  height: 200px;
   background-color: var(--primary-color);
   display: flex;
   color: white;
@@ -56,9 +55,20 @@
   text-decoration: underline;
 }
 
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 500px) {
+  .footerBody {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .footerBody > * {
+    width: 100%;
+  }
   .footerContacts {
-    width: 130px;
+    width: 160px;
+  }
+  .footerColumn {
+    text-align: center;
+    margin: 20px;
   }
   .footerColumn > h2 {
     font-size: 1.3rem;

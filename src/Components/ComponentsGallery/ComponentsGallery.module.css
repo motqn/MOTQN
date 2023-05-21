@@ -18,10 +18,11 @@
 }
 .galleryContainer {
   display: grid;
+
   flex: 1;
   padding: 20px;
   grid-template-columns: repeat(auto-fill, minmax(200px, 300px));
-  justify-content: center;
+  justify-items: center;
   gap: 50px;
 }
 

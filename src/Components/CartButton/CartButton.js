@@ -39,65 +39,68 @@ const CartButton = ({ selectedItems, setSelectedItems }) => {
           <h2>Your Cart</h2>
           {!!selectedItems.length ? (
             <>
-              <table className={style.cartTable}>
-                <thead>
-                  <tr>
-                    <th></th>
-                    <th>Component</th>
-                    <th>Item Price</th>
-                    <th>Quantity</th>
-                    <th>Total Price / Item</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {selectedItems.map((item) => (
+              <div className={style.cartTableContainer}>
+                <table >
+                  <thead>
                     <tr>
-                      <td
-                        className={style.deleteButton}
-                        onClick={(e) => {
-                          e.target.parentNode.classList.add(
-                            style.showDeleteAnimation
-                          );
-                          setTimeout(() => {
-                            e.target.parentNode.classList.remove(
+                      <th></th>
+                      <th>Component</th>
+                      <th>Item Price</th>
+                      <th>Quantity</th>
+                      <th>Total Price / Item</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {selectedItems.map((item) => (
+                      <tr>
+                        <td
+                          className={style.deleteButton}
+                          onClick={(e) => {
+                            e.target.parentNode.classList.add(
                               style.showDeleteAnimation
                             );
-                            setSelectedItems((prevValue) => {
-                              return prevValue.filter(
-                                (element) => element.id !== item.id
+                            setTimeout(() => {
+                              e.target.parentNode.classList.remove(
+                                style.showDeleteAnimation
                               );
-                            });
-                          }, 800);
-                        }}
-                      >
-                        x
-                      </td>
-                      <td style={{ textAlign: "left" }}>{item.name}</td>
-                      <td>{item.price}</td>
-                      <td className={style.quantityCell}>
-                        <button
-                          onClick={(e) => {
-                            e.preventDefault();
-                            changeQuantity(item, -1);
+                              setSelectedItems((prevValue) => {
+                                return prevValue.filter(
+                                  (element) => element.id !== item.id
+                                );
+                              });
+                            }, 800);
                           }}
                         >
-                          -
-                        </button>
-                        <p>{item.quantity}</p>
-                        <button
-                          onClick={(e) => {
-                            e.preventDefault();
-                            changeQuantity(item, 1);
-                          }}
-                        >
-                          +
-                        </button>
-                      </td>
-                      <td>{(item.price * item.quantity).toFixed(2)}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
+                          x
+                        </td>
+                        <td style={{ textAlign: "left" }}>{item.name}</td>
+                        <td>{item.price}</td>
+                        <td className={style.quantityCell}>
+                          <button
+                            onClick={(e) => {
+                              e.preventDefault();
+                              changeQuantity(item, -1);
+                            }}
+                          >
+                            -
+                          </button>
+                          <p>{item.quantity}</p>
+                          <button
+                            onClick={(e) => {
+                              e.preventDefault();
+                              changeQuantity(item, 1);
+                            }}
+                          >
+                            +
+                          </button>
+                        </td>
+                        <td>{(item.price * item.quantity).toFixed(2)}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+
               <h2 className={style.priceTotal}>
                 Total :
                 <span>
