@@ -40,7 +40,7 @@ const CartButton = ({ selectedItems, setSelectedItems }) => {
           {!!selectedItems.length ? (
             <>
               <div className={style.cartTableContainer}>
-                <table >
+                <table>
                   <thead>
                     <tr>
                       <th></th>
@@ -74,7 +74,7 @@ const CartButton = ({ selectedItems, setSelectedItems }) => {
                           x
                         </td>
                         <td style={{ textAlign: "left" }}>{item.name}</td>
-                        <td>{item.price}</td>
+                        <td>{item.priceSell}</td>
                         <td className={style.quantityCell}>
                           <button
                             onClick={(e) => {
@@ -94,7 +94,7 @@ const CartButton = ({ selectedItems, setSelectedItems }) => {
                             +
                           </button>
                         </td>
-                        <td>{(item.price * item.quantity).toFixed(2)}</td>
+                        <td>{(item.priceSell * item.quantity).toFixed(2)}</td>
                       </tr>
                     ))}
                   </tbody>
@@ -107,7 +107,7 @@ const CartButton = ({ selectedItems, setSelectedItems }) => {
                   {selectedItems
                     .reduce(
                       (total, current) =>
-                        total + current.quantity * current.price,
+                        total + current.quantity * current.priceSell,
                       0
                     )
                     .toFixed(2) + " EGP"}

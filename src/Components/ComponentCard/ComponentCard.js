@@ -4,7 +4,8 @@ const ComponentCard = ({
   id,
   name,
   image,
-  price,
+  priceSell,
+  priceBuy,
   specs,
   defects,
   status,
@@ -14,7 +15,9 @@ const ComponentCard = ({
 }) => {
   return (
     <div key={id} className={style.cardContainer}>
-      <img src={image} alt="Component" />
+      <div className={style.componentImageContainer}>
+        <img src={image} alt="Component" />
+      </div>
       <p
         className={
           status === "Available"
@@ -29,7 +32,7 @@ const ComponentCard = ({
       <div className={style.componentDescription}>
         <div className={style.cardText}>
           <h2 className={style.title}>{name}</h2>
-          <p className={style.price}>{price} EGP</p>
+          <p className={style.price}>{priceSell} EGP</p>
         </div>
         <div className={style.cardButtonsContainer}>
           <button className={style.detailsButton} onClick={onDetails}>

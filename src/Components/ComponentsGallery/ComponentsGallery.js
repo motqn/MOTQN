@@ -110,8 +110,8 @@ const ComponentsGallery = ({ searchStr, selectedItems, setSelectedItems }) => {
                         <table>
                           <thead>
                             <tr>
-                              <th>A</th>
-                              <th>B</th>
+                              <th>Name</th>
+                              <th>Details</th>
                             </tr>
                           </thead>
                           <tbody>
@@ -128,8 +128,12 @@ const ComponentsGallery = ({ searchStr, selectedItems, setSelectedItems }) => {
                               <td>{componentDetails.defects || "None"}</td>
                             </tr>
                             <tr>
-                              <td>Price</td>
-                              <td> {componentDetails.price} EGP</td>
+                              <td>Old Price</td>
+                              <td> {componentDetails.priceBuy} EGP</td>
+                            </tr>
+                            <tr>
+                              <td>New Price</td>
+                              <td>{componentDetails.priceSell} EGP</td>
                             </tr>
                           </tbody>
                         </table>
@@ -176,7 +180,8 @@ const ComponentsGallery = ({ searchStr, selectedItems, setSelectedItems }) => {
                 name: component.Name,
                 available: component.Available,
                 image: component.IMG,
-                price: component["Price\nSell"],
+                priceSell: component["Price\nSell"],
+                priceBuy: component["Price\nBuy"],
                 specs: component.Specs,
                 defects: component.Defects,
                 status: component.Status,

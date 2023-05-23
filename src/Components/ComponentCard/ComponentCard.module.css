@@ -9,6 +9,7 @@
   transition: all 200ms;
   background-color: white;
   max-width: 250px;
+  width: 300px;
 }
 
 .cardContainer:hover {
@@ -25,9 +26,18 @@
   flex-direction: column;
   justify-content: space-between;
 }
-.cardContainer > img {
+.componentImageContainer {
   width: 100%;
-  aspect-ratio: 5 / 3;
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.cardContainer img {
+  max-width: 200px;
+  max-height: 150px;
+  width: auto;
+  height: auto;
 }
 
 .availableSt,
