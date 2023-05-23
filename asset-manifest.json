@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/MOTQN/static/css/main.8c2f2aec.css",
-    "main.js": "/MOTQN/static/js/main.64492c56.js",
+    "main.css": "/MOTQN/static/css/main.28e930a1.css",
+    "main.js": "/MOTQN/static/js/main.b880bdab.js",
     "static/js/787.4acf272c.chunk.js": "/MOTQN/static/js/787.4acf272c.chunk.js",
     "static/media/inter-all-400-normal.woff": "/MOTQN/static/media/inter-all-400-normal.8c804432e8c67741aac0.woff",
     "static/media/MotqnLW.png": "/MOTQN/static/media/MotqnLW.df752bf114b376d59f3a.png",
@@ -17,12 +17,12 @@
     "index.html": "/MOTQN/index.html",
     "static/media/instagram.svg": "/MOTQN/static/media/instagram.0f9b1a0e08f0650c69f0fc0634ff8925.svg",
     "static/media/facebook.svg": "/MOTQN/static/media/facebook.de02e10f1cd9dfd863c433927b0d5b3a.svg",
-    "main.8c2f2aec.css.map": "/MOTQN/static/css/main.8c2f2aec.css.map",
-    "main.64492c56.js.map": "/MOTQN/static/js/main.64492c56.js.map",
+    "main.28e930a1.css.map": "/MOTQN/static/css/main.28e930a1.css.map",
+    "main.b880bdab.js.map": "/MOTQN/static/js/main.b880bdab.js.map",
     "787.4acf272c.chunk.js.map": "/MOTQN/static/js/787.4acf272c.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.8c2f2aec.css",
-    "static/js/main.64492c56.js"
+    "static/css/main.28e930a1.css",
+    "static/js/main.b880bdab.js"
   ]
 }
