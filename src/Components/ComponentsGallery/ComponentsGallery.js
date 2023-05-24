@@ -138,7 +138,7 @@ const ComponentsGallery = ({ searchStr, selectedItems, setSelectedItems }) => {
                           </thead>
                           <tbody>
                             <tr>
-                              <td>remaining in stock</td>
+                              <td style={{whiteSpace:"nowrap"}}>Remaining in stock</td>
                               <td>{componentDetails.available}</td>
                             </tr>
                             <tr>
@@ -150,12 +150,12 @@ const ComponentsGallery = ({ searchStr, selectedItems, setSelectedItems }) => {
                               <td>{componentDetails.defects || "None"}</td>
                             </tr>
                             <tr>
-                              <td>Old Price</td>
-                              <td> {componentDetails.priceBuy} EGP</td>
+                              <td>Souq Price</td>
+                              <td className={style.souqPrice}>{componentDetails.souqPrice} EGP</td>
                             </tr>
                             <tr>
-                              <td>New Price</td>
-                              <td>{componentDetails.priceSell} EGP</td>
+                              <td>Our Price</td>
+                              <td className={style.sellPrice}> {componentDetails.sellPrice} EGP</td>
                             </tr>
                           </tbody>
                         </table>
@@ -202,8 +202,8 @@ const ComponentsGallery = ({ searchStr, selectedItems, setSelectedItems }) => {
                 name: component.Name,
                 available: component.Quantity,
                 image: component.IMG,
-                priceSell: component["Price\nSell"],
-                priceBuy: component["Price\nBuy"],
+                souqPrice: component["Price\nSouq"],
+                sellPrice: component["Price\nSell"],
                 specs: component.Specs,
                 defects: component.Defects,
                 status: component.Status,

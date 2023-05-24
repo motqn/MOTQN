@@ -68,8 +68,8 @@
   flex-shrink: 0;
   max-height: 500px;
   max-width: 500px;
-  width: 100%;
-  height: 100%;
+  width: auto;
+  height: auto;
 }
 
 .componentData {
@@ -170,6 +170,15 @@
 .usedSt {
   background-color: #406868;
   color: white;
+}
+.souqPrice {
+  color: red;
+  text-decoration: line-through;
+  font-weight: 700;
+}
+.sellPrice{
+  color:green;
+  font-weight: 700;
 }
 .quantityContainer > label {
   text-align: center;

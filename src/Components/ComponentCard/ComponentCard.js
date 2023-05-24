@@ -4,8 +4,8 @@ const ComponentCard = ({
   id,
   name,
   image,
-  priceSell,
-  priceBuy,
+  souqPrice,
+  sellPrice,
   specs,
   defects,
   status,
@@ -36,7 +36,7 @@ const ComponentCard = ({
       <div className={style.componentDescription}>
         <div className={style.cardText}>
           <h2 className={style.title}>{name}</h2>
-          <p className={style.price}>{priceSell} EGP</p>
+          <p className={style.price}>{sellPrice} EGP</p>
         </div>
         <div className={style.cardButtonsContainer}>
           <button className={style.detailsButton} onClick={onDetails}>

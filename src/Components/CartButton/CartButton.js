@@ -74,7 +74,7 @@ const CartButton = ({ selectedItems, setSelectedItems }) => {
                           x
                         </td>
                         <td style={{ textAlign: "left" }}>{item.name}</td>
-                        <td>{item.priceSell}</td>
+                        <td>{item.sellPrice}</td>
                         <td className={style.quantityCell}>
                           <button
                             onClick={(e) => {
@@ -94,7 +94,7 @@ const CartButton = ({ selectedItems, setSelectedItems }) => {
                             +
                           </button>
                         </td>
-                        <td>{(item.priceSell * item.quantity).toFixed(2)}</td>
+                        <td>{(item.sellPrice * item.quantity).toFixed(2)}</td>
                       </tr>
                     ))}
                   </tbody>
@@ -107,7 +107,7 @@ const CartButton = ({ selectedItems, setSelectedItems }) => {
                   {selectedItems
                     .reduce(
                       (total, current) =>
-                        total + current.quantity * current.priceSell,
+                        total + current.quantity * current.sellPrice,
                       0
                     )
                     .toFixed(2) + " EGP"}
