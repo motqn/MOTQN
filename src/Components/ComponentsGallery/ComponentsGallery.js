@@ -86,26 +86,48 @@ const ComponentsGallery = ({ searchStr, selectedItems, setSelectedItems }) => {
       ) : (
         <>
           <Popup trigger={showDetailsPopup}>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} className={style.componentForm}>
               <div className={style.popupBody}>
                 <div className={style.componentDetails}>
-                  <img src={componentDetails.image} alt="Component" />
+                  <img
+                    src={componentDetails.image}
+                    alt=""
+                    className={style.wideImage}
+                  />
                   <div className={style.componentData}>
                     <div className={style.componentText}>
                       <div className={style.productTitle}>
                         <p className={style.name}>{componentDetails.name}</p>
-                        <p
-                          className={
-                            componentDetails.status === "Available"
-                              ? style.availableSt
-                              : componentDetails.status === "Sold Out"
-                              ? style.soldSt
-                              : style.pendingSt
-                          }
-                        >
-                          {componentDetails.status}
-                        </p>
+                        <div>
+                          <p
+                            className={
+                              componentDetails.status === "Available"
+                                ? style.availableSt
+                                : componentDetails.status === "Sold Out"
+                                ? style.soldSt
+                                : style.pendingSt
+                            }
+                          >
+                            {componentDetails.status}
+                          </p>
+                          <p
+                            className={
+                              componentDetails.newStatus === "TRUE"
+                                ? style.newSt
+                                : style.usedSt
+                            }
+                          >
+                            {componentDetails.newStatus === "TRUE"
+                              ? "New"
+                              : "Used"}
+                          </p>
+                        </div>
                       </div>
+                      <img
+                        src={componentDetails.image}
+                        alt=""
+                        className={style.narrowImage}
+                      />
                       <div className={style.productTableContainer}>
                         <table>
                           <thead>
@@ -178,13 +200,14 @@ const ComponentsGallery = ({ searchStr, selectedItems, setSelectedItems }) => {
               const componentData = {
                 id: component.ID,
                 name: component.Name,
-                available: component.Available,
+                available: component.Quantity,
                 image: component.IMG,
                 priceSell: component["Price\nSell"],
                 priceBuy: component["Price\nBuy"],
                 specs: component.Specs,
                 defects: component.Defects,
                 status: component.Status,
+                newStatus: component["New?"],
               };
               return (
                 <ComponentCard

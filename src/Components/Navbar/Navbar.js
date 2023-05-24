@@ -13,7 +13,7 @@ const Navbar = ({ setSearchStr }) => {
   return (
     <div className={style.navbarBody}>
       <h2>
-        Home <span>/</span> Used Components
+        Home <span>/</span> Components
       </h2>
       <img src={logo} alt="logo" />
       <form onSubmit={handleSubmit}>

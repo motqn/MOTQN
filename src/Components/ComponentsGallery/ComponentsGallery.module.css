@@ -26,6 +26,10 @@
   justify-content: center;
   gap: 50px;
 }
+.componentForm {
+  display: flex;
+  justify-content: center;
+}
 
 .popupBody {
   animation: flyUp 300ms ease-in-out 0s 1 normal forwards;
@@ -36,6 +40,9 @@
   flex-direction: column;
   align-items: center;
   gap: 20px;
+  overflow: scroll;
+  max-height: 90vh;
+  width: 1000px;
 }
 @keyframes flyUp {
   0% {
@@ -54,9 +61,15 @@
 .componentDetails {
   display: flex;
   gap: 20px;
+  align-items: flex-start;
+  width: 100%;
 }
 .componentDetails > img {
-  height: 500px;
+  flex-shrink: 0;
+  max-height: 500px;
+  max-width: 500px;
+  width: 100%;
+  height: 100%;
 }
 
 .componentData {
@@ -64,15 +77,25 @@
   flex-direction: column;
   gap: 20px;
   justify-content: center;
+  align-items: center;
 }
 .componentData > * {
   flex-shrink: 0;
+  flex: 1;
+}
+.narrowImage {
+  display: none;
 }
 .componentText {
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .productTableContainer {
-  max-width: 400px;
+  width: 100%;
+  max-height: 400px;
+  overflow: auto;
 }
 .productTableContainer table {
   width: 100%;
@@ -93,8 +116,6 @@
 .productTableContainer tbody tr:nth-child(even) {
   background-color: aliceblue;
 }
-.productTableContainer tbody tr:nth-child(odd) {
-}
 .productTableContainer tbody td {
   border: 1px solid rgb(187, 187, 187);
 }
@@ -103,6 +124,7 @@
   justify-content: space-between;
   align-items: center;
   gap: 20px;
+  align-self: stretch;
 }
 .componentText > .productTitle > .name {
   font-weight: 600;
@@ -119,7 +141,7 @@
   border: none;
 }
 .availableSt {
-  background-color: green;
+  background-color: rgb(35, 115, 6);
   color: white;
 }
 .soldSt {
@@ -129,6 +151,25 @@
 .pendingSt {
   background-color: rgb(234, 234, 102);
   color: black;
+}
+
+.newSt,
+.usedSt {
+  padding: 0;
+  width: 80px;
+  text-align: center;
+  font-size: 0.8rem;
+  border-radius: 20px;
+  border: none;
+  font-weight: 700;
+}
+.newSt {
+  background-color: #8e214a;
+  color: white;
+}
+.usedSt {
+  background-color: #406868;
+  color: white;
 }
 .quantityContainer > label {
   text-align: center;
@@ -172,6 +213,25 @@
 @media screen and (max-width: 1800px) {
   .sectionBody {
     width: 90%;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .popupBody {
+    width: min(90%, 600px);
+  }
+  .wideImage {
+    display: none;
+  }
+  .narrowImage {
+    display: unset;
+    max-width: 70%;
+    max-height: 70%;
+    width: auto;
+    height: auto;
+  }
+  .productTableContainer {
+    width: 100%;
   }
 }
 

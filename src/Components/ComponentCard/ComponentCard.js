@@ -12,6 +12,7 @@ const ComponentCard = ({
   available,
   onBuy,
   onDetails,
+  newStatus,
 }) => {
   return (
     <div key={id} className={style.cardContainer}>
@@ -28,6 +29,9 @@ const ComponentCard = ({
         }
       >
         {status}
+      </p>
+      <p className={newStatus === "TRUE" ? style.newSt : style.usedSt}>
+        {newStatus === "TRUE" ? "New" : "Used"}
       </p>
       <div className={style.componentDescription}>
         <div className={style.cardText}>
