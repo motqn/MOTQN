@@ -79,7 +79,8 @@
   left: 5%;
   top: 5%;
   font-weight: 700;
-}.newSt {
+}
+.newSt {
   background-color: #8e214a;
   color: white;
 }
@@ -98,6 +99,17 @@
 }
 .title {
   font-size: 1.3rem;
+}
+
+.priceContainer {
+}
+.souqPrice {
+  text-decoration: line-through;
+  text-align: center;
+  color: rgb(100, 100, 100);
+  margin: 0;
+  font-weight: 600;
+  font-size: 1.2rem;
 }
 
 .price {

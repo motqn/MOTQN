@@ -36,7 +36,10 @@ const ComponentCard = ({
       <div className={style.componentDescription}>
         <div className={style.cardText}>
           <h2 className={style.title}>{name}</h2>
-          <p className={style.price}>{sellPrice} EGP</p>
+          <div className={style.priceContainer}>
+            <p className={style.souqPrice}>{souqPrice} EGP</p>
+            <p className={style.price}>{sellPrice} EGP</p>
+          </div>
         </div>
         <div className={style.cardButtonsContainer}>
           <button className={style.detailsButton} onClick={onDetails}>
