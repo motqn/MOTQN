@@ -94,7 +94,15 @@ const CartButton = ({ selectedItems, setSelectedItems }) => {
                             +
                           </button>
                         </td>
-                        <td>{(item.sellPrice * item.quantity).toFixed(2)}</td>
+                        <td>
+                          {(
+                            parseInt(
+                              Array.from(item.sellPrice)
+                                .filter((elem) => elem !== ",")
+                                .join("")
+                            ) * item.quantity
+                          ).toFixed(2)}
+                        </td>
                       </tr>
                     ))}
                   </tbody>
@@ -105,11 +113,14 @@ const CartButton = ({ selectedItems, setSelectedItems }) => {
                 Total :
                 <span>
                   {selectedItems
-                    .reduce(
-                      (total, current) =>
-                        total + current.quantity * current.sellPrice,
-                      0
-                    )
+                    .reduce((total, current) => {
+                      const value = parseInt(
+                        Array.from(current.sellPrice)
+                          .filter((elem) => elem !== ",")
+                          .join("")
+                      );
+                      return total + current.quantity * value;
+                    }, 0)
                     .toFixed(2) + " EGP"}
                 </span>
               </h2>

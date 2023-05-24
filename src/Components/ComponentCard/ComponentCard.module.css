@@ -78,15 +78,13 @@
   position: absolute;
   left: 5%;
   top: 5%;
-  opacity: 0.7;
   font-weight: 700;
-}
-.newSt {
-  background-color: rgb(255, 0, 0);
-  color: rgb(255, 255, 255);
+}.newSt {
+  background-color: #8e214a;
+  color: white;
 }
 .usedSt {
-  background-color: rgb(35, 115, 6);
+  background-color: #406868;
   color: white;
 }
 .cardText {
